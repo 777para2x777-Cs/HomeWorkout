@@ -1,0 +1,18 @@
+{
+  "name": "FitCore Home – برنامه تمرین خانگی",
+  "short_name": "FitCore",
+  "description": "برنامه تمرینی خانگی برای دوچرخه اسپینینگ، دمبل، کش مقاومتی و مت یوگا",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "fitcore-home",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0d0d",
+  "theme_color": "#eb6834",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
