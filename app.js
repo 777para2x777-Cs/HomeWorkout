@@ -88,7 +88,7 @@ const EXERCISES = {
     cues: ['زانو کمی خم، کمر صاف، از لگن خم شو', 'دمبل‌ها را به سمت پهلو بکش، آرنج نزدیک بدن', 'در بالای حرکت یک لحظه فشار کتف‌ها را حس کن'] },
   band_overhead_press: { name: 'پرس سرشانه ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=SoKGZpyXUMY',
-    cues: ['روی وسط کش بایست، دسته‌ها کنار شانه', 'کش را بالای سر فشار بده تا دست‌ها صاف شوند', 'شکم منقبض تا کمر قوس نکند'] },
+    cues: ['حلقه‌ی پایینی کش (بند مچ‌پا) رو زیر یک یا دو پا بذار، یا کش رو پایین درب انکر کن', 'دسته‌ی وسط رو کنار شانه بگیر و بالای سر فشار بده تا دست‌ها صاف شوند', 'شکم منقبض تا کمر قوس نکند'] },
   rdl: { name: 'ددلیفت رومانیایی با دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=aa57T45iFSE',
     cues: ['دمبل‌ها جلوی ران، زانو کمی خم و ثابت', 'از لگن خم شو، دمبل‌ها نزدیک پا پایین بروند', 'کمر صاف بماند، پشت ران را حس کن'] },
@@ -97,13 +97,13 @@ const EXERCISES = {
     cues: ['دمبل‌ها کنار بدن، یک قدم بلند جلو بردار', 'زانوی عقب نزدیک زمین، زانوی جلو بالای مچ پا', 'با فشار پای جلو بلند شو و قدم بعد را بردار'] },
   band_chest_press: { name: 'پرس سینه ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=6-86jEAXA08',
-    cues: ['کش را پشت سر از یک تکیه‌گاه (مثل درب) رد کن', 'دست‌ها را رو به جلو فشار بده تا کامل باز شوند', 'برگشت را آهسته و کنترل‌شده انجام بده'] },
+    cues: ['کش رو با بند بالای درب (لولا یا لبه‌ی بالای درب) انکر کن، تقریباً هم‌ارتفاع سینه', 'پشت به درب بایست، دسته رو با دو دست بگیر و رو به جلو فشار بده', 'یک قدم جلوتر برو تا کش کشیده بمونه، برگشت رو آهسته و کنترل‌شده انجام بده'] },
   single_arm_row: { name: 'زیربغل تک‌دست با دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=fURsHPHgssI',
     cues: ['یک دست و زانو روی سطح ثابت، کمر صاف', 'دمبل را با دست دیگر به سمت پهلو بکش', 'بدن تاب نخورد، فقط بازو حرکت کند'] },
-  band_glute_bridge: { name: 'پل باسن با کش دور زانو', equipment: ['کش مقاومتی', 'مت'], category: 'strength',
-    video: 'https://www.youtube.com/watch?v=gOOo1nmydeA',
-    cues: ['کش را بالای زانو ببند، به پشت دراز بکش', 'لگن را بالا ببر تا از شانه تا زانو یک خط شود', 'در بالا باسن را محکم منقبض کن'] },
+  band_kickback: { name: 'ضربه پا به عقب با کش (باسن)', equipment: ['کش مقاومتی'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=qnllnxtCP2s',
+    cues: ['کش رو پایین درب (نزدیک زمین) انکر کن و بند مچ‌پا رو به یک پا ببند', 'با دست به دیوار یا در تکیه بده، پای بسته‌شده رو مستقیم و کنترل‌شده به عقب بکش', 'در انتها باسن رو منقبض کن، زانو زیاد خم نشه'] },
   lateral_raise: { name: 'نشر جانب دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=ssAo_xwFt5c',
     cues: ['دمبل سبک انتخاب کن', 'دست‌ها را تا ارتفاع شانه از پهلو بالا ببر', 'کمی آرنج خم باشد، شانه‌ها بالا نیاید'] },
@@ -158,6 +158,31 @@ const EXERCISES = {
   childs_pose: { name: 'حالت کودک', equipment: ['مت'], category: 'recovery',
     video: 'https://www.youtube.com/watch?v=EniGBCHAEVQ',
     cues: ['زانو بزن، باسن روی پاشنه بنشین', 'دست‌ها جلو دراز، پیشانی روی مت', 'نفس عمیق و ریلکس کامل'] },
+
+  dead_bug: { name: 'ددباگ', equipment: ['مت'], category: 'core',
+    video: 'https://www.youtube.com/watch?v=bxn9FBrt4-A',
+    cues: ['به پشت دراز بکش، دست‌ها بالای شانه و زانوها ۹۰ درجه بالا', 'کمر رو محکم به زمین بچسبون (بدون فاصله)', 'همزمان یک دست و پای مخالف رو کشیده به سمت پایین ببر، بدون اینکه کمر از زمین جدا بشه'] },
+  bird_dog: { name: 'پرنده-سگ', equipment: ['مت'], category: 'core',
+    video: 'https://www.youtube.com/watch?v=ZdAHe9_HeEw',
+    cues: ['روی چهاردست‌وپا، کمر صاف و شکم منقبض', 'همزمان یک دست و پای مخالف رو صاف و هم‌خط با بدن باز کن', 'لگن نچرخه، کمر گود نشه؛ کنترل‌شده برگردون'] },
+  pelvic_tilt: { name: 'چرخش لگن به عقب', equipment: ['مت'], category: 'core',
+    video: 'https://www.youtube.com/watch?v=Q59R9p4rzxw',
+    cues: ['به پشت دراز بکش، زانو خم و کف پا روی زمین', 'با فشار شکم، کمر رو به زمین بچسبون و لگن رو کمی به عقب بچرخون', 'چند ثانیه نگه دار، بدون حبس نفس، آروم برگردون'] },
+  bw_glute_bridge: { name: 'پل باسن (بدون وزنه)', equipment: ['مت'], category: 'core',
+    video: 'https://www.youtube.com/watch?v=8bbE64NuDTU',
+    cues: ['به پشت دراز بکش، زانو خم و کف پا نزدیک باسن', 'با فشار پاشنه، لگن رو بالا ببر تا از شانه تا زانو یک خط بشه', 'در بالا باسن رو محکم منقبض کن، کمر قوس نکنه'] },
+};
+
+/* ---------- بلوک اختیاری اصلاح گودی کمر (هر روز در دسترس) ---------- */
+const CORRECTIVE_BLOCK = {
+  key: 'CORR',
+  title: 'اصلاحی گودی کمر (اختیاری)',
+  items: [
+    { ex: 'dead_bug', sets: 3, reps: '۱۰ هر طرف', restSec: 30 },
+    { ex: 'bird_dog', sets: 3, reps: '۱۰ هر طرف', restSec: 30 },
+    { ex: 'pelvic_tilt', sets: 2, reps: '۱۲', restSec: 20 },
+    { ex: 'bw_glute_bridge', sets: 3, reps: '۱۵', restSec: 30 },
+  ],
 };
 
 /* ---------- 3-day program (≤45 دقیقه هر جلسه) ---------- */
@@ -173,7 +198,7 @@ const DAY_PLANS = [
         { ex: 'rdl', sets: 3, reps: '۱۲', restSec: 60 },
       ] },
       { title: 'فینیشر شکم', items: [
-        { ex: 'plank', sets: 3, reps: '۴۰ ثانیه', restSec: 30 },
+        { ex: 'plank', sets: 3, reps: '۴۰ ثانیه', restSec: 30, durationSec: 40 },
         { ex: 'bicycle_crunch', sets: 3, reps: '۲۰', restSec: 30 },
       ] },
     ], cooldown: ['۲ دقیقه کشش سینه، پشت‌بازو و شانه'] },
@@ -184,10 +209,10 @@ const DAY_PLANS = [
     blocks: [
       { title: 'کاردیو اصلی', items: [ { ex: 'bike_hiit', sets: '۸ دور', reps: '۳۰ ثانیه اسپرینت / ۹۰ ثانیه ریکاوری', isHiit: true } ] },
       { title: 'شکم', items: [
-        { ex: 'mountain_climber', sets: 3, reps: '۳۰ ثانیه', restSec: 20 },
+        { ex: 'mountain_climber', sets: 3, reps: '۳۰ ثانیه', restSec: 20, durationSec: 30 },
         { ex: 'russian_twist', sets: 3, reps: '۲۰', restSec: 20 },
         { ex: 'leg_raise', sets: 3, reps: '۱۵', restSec: 20 },
-        { ex: 'plank_shoulder_tap', sets: 3, reps: '۳۰ ثانیه', restSec: 20 },
+        { ex: 'plank_shoulder_tap', sets: 3, reps: '۳۰ ثانیه', restSec: 20, durationSec: 30 },
       ] },
     ], cooldown: ['۵ دقیقه رکاب سبک برای سرد کردن + کشش ساق پا'] },
 
@@ -198,12 +223,12 @@ const DAY_PLANS = [
         { ex: 'walking_lunge', sets: 3, reps: '۱۲ هر پا', restSec: 60 },
         { ex: 'band_chest_press', sets: 3, reps: '۱۵', restSec: 45 },
         { ex: 'single_arm_row', sets: 3, reps: '۱۲ هر دست', restSec: 60 },
-        { ex: 'band_glute_bridge', sets: 3, reps: '۱۵', restSec: 45 },
+        { ex: 'band_kickback', sets: 3, reps: '۱۲ هر پا', restSec: 45 },
         { ex: 'lateral_raise', sets: 3, reps: '۱۵', restSec: 45 },
       ] },
       { title: 'فینیشر شکم', items: [
         { ex: 'reverse_crunch', sets: 3, reps: '۱۵', restSec: 30 },
-        { ex: 'side_plank', sets: 3, reps: '۳۰ ثانیه هر طرف', restSec: 30 },
+        { ex: 'side_plank', sets: 3, reps: '۳۰ ثانیه هر طرف', restSec: 30, durationSec: 30 },
       ] },
     ], cooldown: ['۲ دقیقه کشش چهارسر ران، همسترینگ و باسن'] },
 ];
@@ -221,11 +246,11 @@ const BONUS_PLANS = {
     blocks: [
       { title: 'فلوی یوگا', items: [
         { ex: 'cat_cow', sets: 2, reps: '۸ نفس', restSec: 15 },
-        { ex: 'down_dog_block', sets: 3, reps: '۳۰-۴۵ ثانیه', restSec: 15 },
-        { ex: 'pigeon_block', sets: 2, reps: '۴۵ ثانیه هر طرف', restSec: 15 },
-        { ex: 'seated_fold_block', sets: 2, reps: '۴۵ ثانیه', restSec: 15 },
-        { ex: 'hip_flexor_stretch', sets: 2, reps: '۳۰ ثانیه هر طرف', restSec: 15 },
-        { ex: 'childs_pose', sets: 1, reps: '۱ دقیقه', restSec: 0 },
+        { ex: 'down_dog_block', sets: 3, reps: '۳۰-۴۵ ثانیه', restSec: 15, durationSec: 40 },
+        { ex: 'pigeon_block', sets: 2, reps: '۴۵ ثانیه هر طرف', restSec: 15, durationSec: 45 },
+        { ex: 'seated_fold_block', sets: 2, reps: '۴۵ ثانیه', restSec: 15, durationSec: 45 },
+        { ex: 'hip_flexor_stretch', sets: 2, reps: '۳۰ ثانیه هر طرف', restSec: 15, durationSec: 30 },
+        { ex: 'childs_pose', sets: 1, reps: '۱ دقیقه', restSec: 0, durationSec: 60 },
       ] },
     ], cooldown: ['۳ دقیقه تنفس عمیق برای آرام کردن سیستم عصبی'] },
 };
@@ -275,17 +300,31 @@ function getCycleWeek() {
   const diffDays = Math.max(0, Math.round((now - start) / 86400000));
   return (Math.floor(diffDays / 7) % 4) + 1;
 }
-function getCompletedDates() { return readJSON(KEYS.completed, []); }
-function toggleCompletedToday() {
-  const list = getCompletedDates();
-  const t = todayISO();
-  const idx = list.indexOf(t);
-  if (idx >= 0) list.splice(idx, 1); else list.push(t);
-  writeJSON(KEYS.completed, list);
+function getCompletedEntries() {
+  // each entry: { date: 'yyyy-mm-dd', time: 'HH:MM' } — old plain-string entries (pre-timestamp) are normalized on read
+  return readJSON(KEYS.completed, []).map((e) => (typeof e === 'string' ? { date: e, time: null } : e));
 }
-function isTodayCompleted() { return getCompletedDates().includes(todayISO()); }
+function getCompletedDates() { return getCompletedEntries().map((e) => e.date); }
+function getCompletedDateSet() { return new Set(getCompletedDates()); }
+function toggleCompletedToday() {
+  const entries = getCompletedEntries();
+  const t = todayISO();
+  const idx = entries.findIndex((e) => e.date === t);
+  if (idx >= 0) {
+    entries.splice(idx, 1);
+  } else {
+    const now = new Date();
+    entries.push({ date: t, time: pad2(now.getHours()) + ':' + pad2(now.getMinutes()) });
+  }
+  writeJSON(KEYS.completed, entries);
+}
+function isTodayCompleted() { return getCompletedDateSet().has(todayISO()); }
+function getTodayCompletionTime() {
+  const entry = getCompletedEntries().find((e) => e.date === todayISO());
+  return entry ? entry.time : null;
+}
 function getCurrentStreak() {
-  const set = new Set(getCompletedDates());
+  const set = getCompletedDateSet();
   let streak = 0;
   let d = new Date();
   if (!set.has(todayISO(d))) d.setDate(d.getDate() - 1);
@@ -305,47 +344,90 @@ function toast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
 }
 
-/* ---------- rest bar (auto rest timer between sets, Hevy-style) ---------- */
-let restBarState = null;
-function clearRestBar() {
-  if (restBarState) clearInterval(restBarState.timerId);
-  restBarState = null;
+/* ---------- chime sound (Web Audio, no asset files) ---------- */
+let sharedAudioCtx = null;
+function primeAudioCtx() {
+  if (sharedAudioCtx) return;
+  try { sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch { /* no audio support */ }
+}
+function playChime() {
+  if (!sharedAudioCtx) return;
+  try {
+    if (sharedAudioCtx.state === 'suspended') sharedAudioCtx.resume();
+    const t0 = sharedAudioCtx.currentTime;
+    [ [880, 0], [1318.5, 0.11] ].forEach(([freq, delay]) => {
+      const o = sharedAudioCtx.createOscillator();
+      const g = sharedAudioCtx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(freq, t0 + delay);
+      g.gain.setValueAtTime(0.0001, t0 + delay);
+      g.gain.exponentialRampToValueAtTime(0.35, t0 + delay + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + delay + 0.45);
+      o.connect(g); g.connect(sharedAudioCtx.destination);
+      o.start(t0 + delay);
+      o.stop(t0 + delay + 0.5);
+    });
+  } catch { /* ignore playback failures */ }
+}
+
+/* ---------- active bar: shared work/rest timer, Hevy-style ---------- */
+/* Timestamp-based (not a naive per-tick counter) so background tab throttling
+   never "freezes" the display — visibilitychange forces an immediate resync. */
+let activeBarState = null; // { endTime, timerId, mode: 'work'|'rest', onDone }
+
+function clearActiveBar() {
+  if (activeBarState) clearInterval(activeBarState.timerId);
+  activeBarState = null;
   const bar = document.getElementById('rest-bar');
-  if (bar) bar.hidden = true;
+  if (bar) { bar.hidden = true; bar.classList.remove('mode-work'); }
 }
-function updateRestBarClock() {
+function updateActiveBarClock(remaining) {
   const c = document.getElementById('rest-bar-clock');
-  if (c && restBarState) c.textContent = toFa(pad2(Math.floor(restBarState.remaining / 60))) + ':' + toFa(pad2(restBarState.remaining % 60));
+  if (c) c.textContent = toFa(pad2(Math.floor(remaining / 60))) + ':' + toFa(pad2(remaining % 60));
 }
-function showRestBar(seconds, label) {
-  clearRestBar();
+function tickActiveBar() {
+  if (!activeBarState) return;
+  const remaining = Math.max(0, Math.ceil((activeBarState.endTime - Date.now()) / 1000));
+  if (remaining <= 0) {
+    const onDone = activeBarState.onDone;
+    const mode = activeBarState.mode;
+    if (navigator.vibrate) navigator.vibrate(mode === 'work' ? [120, 80, 120] : 200);
+    playChime();
+    clearActiveBar();
+    if (onDone) onDone();
+    return;
+  }
+  updateActiveBarClock(remaining);
+  if (remaining <= 3 && navigator.vibrate) navigator.vibrate(50);
+}
+function showActiveBar(seconds, label, mode, onDone) {
+  clearActiveBar();
   const bar = document.getElementById('rest-bar');
   bar.hidden = false;
+  bar.classList.toggle('mode-work', mode === 'work');
   bar.innerHTML = `
     <div class="rest-bar-info">
       <div class="rest-bar-label">${label}</div>
       <div class="rest-bar-clock tabular mono" id="rest-bar-clock"></div>
     </div>
     <div class="rest-bar-actions">
-      <button class="btn btn-ghost btn-sm" id="rest-plus">+۱۵</button>
-      <button class="btn btn-secondary btn-sm" id="rest-skip">رد کردن</button>
+      ${mode === 'rest' ? '<button class="btn btn-ghost btn-sm" id="rest-plus">+۱۵</button>' : ''}
+      <button class="btn btn-secondary btn-sm" id="rest-skip">${mode === 'work' ? 'پایان زودتر' : 'رد کردن'}</button>
     </div>`;
-  restBarState = { remaining: seconds, timerId: null };
-  updateRestBarClock();
-  document.getElementById('rest-skip').addEventListener('click', clearRestBar);
-  document.getElementById('rest-plus').addEventListener('click', () => { restBarState.remaining += 15; updateRestBarClock(); });
-  restBarState.timerId = setInterval(() => {
-    if (!restBarState) return;
-    restBarState.remaining--;
-    if (restBarState.remaining <= 0) {
-      if (navigator.vibrate) navigator.vibrate(200);
-      clearRestBar();
-    } else {
-      updateRestBarClock();
-      if (restBarState.remaining <= 3 && navigator.vibrate) navigator.vibrate(50);
-    }
-  }, 1000);
+  activeBarState = { endTime: Date.now() + seconds * 1000, timerId: null, mode, onDone };
+  updateActiveBarClock(seconds);
+  document.getElementById('rest-skip').addEventListener('click', () => {
+    const finishedWork = activeBarState && activeBarState.mode === 'work';
+    const cb = activeBarState && activeBarState.onDone;
+    clearActiveBar();
+    if (finishedWork && cb) cb();
+  });
+  const plusBtn = document.getElementById('rest-plus');
+  if (plusBtn) plusBtn.addEventListener('click', () => { activeBarState.endTime += 15000; tickActiveBar(); });
+  activeBarState.timerId = setInterval(tickActiveBar, 250);
 }
+function showRestBar(seconds, label) { showActiveBar(seconds, label, 'rest', null); }
+document.addEventListener('visibilitychange', () => { if (!document.hidden) tickActiveBar(); });
 
 /* ---------- render: badge ---------- */
 function badgeHtml(category) {
@@ -360,11 +442,16 @@ function buildSetRowsHtml(item, planKey, dateKey) {
   for (let i = 1; i <= item.sets; i++) {
     const key = `${dateKey}_${planKey}_${item.ex}_${i}`;
     const checked = !!checkedMap[key];
+    const label = `${meta.name} · ست ${toFa(i)}`;
+    const timerBtn = item.durationSec
+      ? `<button class="set-timer-btn" data-action="start-work-timer" data-setkey="${key}" data-duration="${item.durationSec}" data-rest="${item.restSec || 0}" data-label="${label}" aria-label="شروع تایمر">${ICONS.play}</button>`
+      : '';
     rows += `
     <div class="set-row ${checked ? 'checked' : ''}">
-      <button class="set-check ${checked ? 'checked' : ''}" data-action="toggle-set" data-setkey="${key}" data-rest="${item.restSec || 0}" data-label="${meta.name} · ست ${toFa(i)}">${ICONS.check}</button>
+      <button class="set-check ${checked ? 'checked' : ''}" data-action="toggle-set" data-setkey="${key}" data-rest="${item.restSec || 0}" data-label="${label}">${ICONS.check}</button>
       <span class="set-num tabular">ست ${toFa(i)}</span>
       <span class="set-target">${item.reps}</span>
+      ${timerBtn}
     </div>`;
   }
   return rows;
@@ -476,9 +563,29 @@ function renderToday() {
     }
   }
 
+  const corrCard = el('div', 'card');
+  const corrDetails = el('details', 'collapsible');
+  const corrSummary = el('summary', '', CORRECTIVE_BLOCK.title);
+  corrDetails.appendChild(corrSummary);
+  const corrBody = el('div');
+  corrBody.style.marginTop = '10px';
+  corrBody.innerHTML = `<p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:10px">هر وقت خواستی — مستقل از برنامه‌ی امروز — برای کمک به رفع گودی کمر (لوردوز) قابل انجامه.</p>`;
+  CORRECTIVE_BLOCK.items.forEach((item) => {
+    corrBody.appendChild(buildExerciseCard(item, CORRECTIVE_BLOCK.key, dateKey));
+  });
+  corrDetails.appendChild(corrBody);
+  corrCard.appendChild(corrDetails);
+  wrap.appendChild(corrCard);
+
+  const completionTime = getTodayCompletionTime();
   const doneBtn = el('button', `btn btn-block ${isTodayCompleted() ? 'btn-secondary' : 'btn-primary'}`);
-  doneBtn.innerHTML = isTodayCompleted() ? `${ICONS.check} تمرین امروز انجام شد` : 'ثبت پایان تمرین امروز';
-  doneBtn.addEventListener('click', () => { toggleCompletedToday(); toast(isTodayCompleted() ? 'دمت گرم! ثبت شد 💪' : 'لغو شد'); renderView(); });
+  doneBtn.innerHTML = isTodayCompleted() ? `${ICONS.check} تمرین امروز ساعت ${toFa(completionTime)} انجام شد` : 'ثبت پایان تمرین امروز';
+  doneBtn.addEventListener('click', () => {
+    toggleCompletedToday();
+    const t = getTodayCompletionTime();
+    toast(isTodayCompleted() ? `دمت گرم! ساعت ${toFa(t)} ثبت شد 💪` : 'لغو شد');
+    renderView();
+  });
   wrap.appendChild(doneBtn);
 
   return wrap;
@@ -614,7 +721,9 @@ function getMostRecentSaturday(d) {
   return r;
 }
 function buildCalendar(numWeeks) {
-  const completed = new Set(getCompletedDates());
+  const completed = getCompletedDateSet();
+  const entriesByDate = {};
+  getCompletedEntries().forEach((e) => { entriesByDate[e.date] = e; });
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const currentWeekStart = getMostRecentSaturday(today);
@@ -648,7 +757,8 @@ function buildCalendar(numWeeks) {
       const [, , jd] = gregorianToJalali(d.getFullYear(), d.getMonth() + 1, d.getDate());
       const mark = status === 'done' ? '✓' : status === 'missed' ? '×' : '';
       cell.innerHTML = `<span class="cal-daynum">${toFa(jd)}</span>${mark ? `<span class="cal-mark">${mark}</span>` : ''}`;
-      cell.title = `${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}`;
+      const doneTime = entriesByDate[iso] && entriesByDate[iso].time;
+      cell.title = `${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}` + (doneTime ? ` · ساعت ${toFa(doneTime)}` : '');
       cellsWrap.appendChild(cell);
     }
     rowWrap.appendChild(cellsWrap);
@@ -667,7 +777,7 @@ function buildCalendar(numWeeks) {
 }
 
 function buildWeeklyBarChart(numWeeks) {
-  const completed = new Set(getCompletedDates());
+  const completed = getCompletedDateSet();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const currentWeekStart = getMostRecentSaturday(today);
@@ -722,6 +832,27 @@ function renderProgress() {
   calBody.appendChild(buildCalendar(6));
   calCard.appendChild(calBody);
   wrap.appendChild(calCard);
+
+  const historyEntries = getCompletedEntries().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
+  if (historyEntries.length) {
+    const histCard = el('div', 'card stack');
+    histCard.innerHTML = `<div class="section-title">تاریخچه اخیر</div>`;
+    const list = el('div', 'stack');
+    list.style.gap = '6px';
+    historyEntries.forEach((e) => {
+      const d = new Date(e.date + 'T00:00:00');
+      const plan = planForJsDay(d.getDay());
+      const row = el('div', 'row-between');
+      row.style.cssText = 'font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--border)';
+      row.innerHTML = `
+        <span>${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}${plan ? ' · ' + plan.title : ''}</span>
+        <span class="mono tabular" style="color:var(--text-muted)">${e.time ? toFa(e.time) : '—'}</span>
+      `;
+      list.appendChild(row);
+    });
+    histCard.appendChild(list);
+    wrap.appendChild(histCard);
+  }
 
   const logCard = el('div', 'card stack');
   logCard.innerHTML = `<div class="section-title">روند وزن بدن</div>`;
@@ -1003,7 +1134,7 @@ function quickToggleTheme() {
 /* ---------- routing / init ---------- */
 const VIEWS = { today: renderToday, week: renderWeek, library: renderLibrary, progress: renderProgress, settings: renderSettings };
 function renderView() {
-  clearRestBar();
+  clearActiveBar();
   const root = document.getElementById('view-root');
   root.innerHTML = '';
   root.appendChild(VIEWS[state.view]());
@@ -1011,21 +1142,44 @@ function renderView() {
 }
 function switchView(v) { state.view = v; renderView(); window.scrollTo(0, 0); }
 
+function markSetChecked(setKey, checked) {
+  const map = getCheckedMap();
+  map[setKey] = checked;
+  writeJSON(KEYS.checked, map);
+  const checkBtn = document.querySelector(`.set-check[data-setkey="${CSS.escape(setKey)}"]`);
+  if (checkBtn) {
+    checkBtn.classList.toggle('checked', checked);
+    const row = checkBtn.closest('.set-row');
+    if (row) row.classList.toggle('checked', checked);
+  }
+}
+
 document.addEventListener('click', (e) => {
+  primeAudioCtx();
+
   const setBtn = e.target.closest('[data-action="toggle-set"]');
   if (setBtn) {
     const key = setBtn.dataset.setkey;
-    const map = getCheckedMap();
-    const nowChecked = !map[key];
-    map[key] = nowChecked;
-    writeJSON(KEYS.checked, map);
-    setBtn.classList.toggle('checked', nowChecked);
-    setBtn.closest('.set-row').classList.toggle('checked', nowChecked);
+    const nowChecked = !getCheckedMap()[key];
+    markSetChecked(key, nowChecked);
     if (nowChecked) {
       const restSec = parseInt(setBtn.dataset.rest, 10) || 0;
       if (restSec > 0) showRestBar(restSec, `استراحت · ${setBtn.dataset.label}`);
     }
   }
+
+  const workBtn = e.target.closest('[data-action="start-work-timer"]');
+  if (workBtn) {
+    const setKey = workBtn.dataset.setkey;
+    const duration = parseInt(workBtn.dataset.duration, 10);
+    const restSec = parseInt(workBtn.dataset.rest, 10) || 0;
+    const label = workBtn.dataset.label;
+    showActiveBar(duration, label, 'work', () => {
+      markSetChecked(setKey, true);
+      if (restSec > 0) showActiveBar(restSec, `استراحت · ${label}`, 'rest', null);
+    });
+  }
+
   const toggleCues = e.target.closest('[data-action="toggle-cues"]');
   if (toggleCues) {
     const cues = document.querySelector(`[data-cues="${toggleCues.dataset.exkey}"]`);
