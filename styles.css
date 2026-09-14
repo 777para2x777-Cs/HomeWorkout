@@ -396,7 +396,8 @@ hr.hairline { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 .chart-empty { color: var(--text-muted); font-size: 13px; text-align: center; padding: 20px 0; }
 
 /* ===== training calendar ===== */
-.cal-weekday-row, .cal-week-cells { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; direction: ltr; }
+.cal-weekday-row, .cal-week-cells { display: flex; gap: 6px; }
+.cal-weekday-row > *, .cal-week-cells > * { flex: 1 1 0; min-width: 0; }
 .cal-weekday-row span { text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted); }
 .cal-week-block { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
 .cal-week-label { width: 62px; flex: none; font-size: 11px; color: var(--text-muted); }

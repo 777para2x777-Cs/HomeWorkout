@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-14.2'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-14.3'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -727,16 +727,15 @@ function buildCalendar(numWeeks) {
   const currentWeekStart = getMostRecentSaturday(today);
 
   const wrap = el('div');
-  // Header must mirror the exact flex skeleton of a .cal-week-block (empty label-width
-  // spacer + the 7-col grid) — it was previously a bare full-width grid while every data
-  // row is inset by the label's width, so header columns never lined up with their data.
+  // Header mirrors the exact flex skeleton of a .cal-week-block (empty label-width
+  // spacer + the 7 day columns) so its columns line up with the data rows beneath it.
+  // Columns themselves are plain flexbox (not CSS Grid) in natural DOM order [Sat...Fri]
+  // — flexbox's RTL mirroring is proven reliable elsewhere in this app (week-pill-row);
+  // CSS Grid's dir=rtl column mirroring turned out inconsistent across Android WebViews.
   const headerBlock = el('div', 'cal-week-block');
   headerBlock.appendChild(el('div', 'cal-week-label', ''));
   const header = el('div', 'cal-weekday-row');
-  // Columns are forced to a fixed physical left-to-right order below (Fri...Sat) —
-  // some WebViews don't mirror CSS Grid tracks under dir=rtl the way flexbox does,
-  // so we render explicit physical order instead of relying on that mirroring.
-  ['ج', 'پ', 'چ', 'س', 'د', 'ی', 'ش'].forEach((l) => header.appendChild(el('span', '', l)));
+  ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'].forEach((l) => header.appendChild(el('span', '', l)));
   headerBlock.appendChild(header);
   wrap.appendChild(headerBlock);
 
@@ -747,7 +746,7 @@ function buildCalendar(numWeeks) {
     const labelText = w === 0 ? 'این هفته' : w === 1 ? 'هفته قبل' : `${toFa(w)} هفته پیش`;
     rowWrap.appendChild(el('div', 'cal-week-label', labelText));
     const cellsWrap = el('div', 'cal-week-cells');
-    for (let c = 6; c >= 0; c--) {
+    for (let c = 0; c < 7; c++) {
       const d = new Date(weekStart);
       d.setDate(d.getDate() + c);
       const iso = todayISO(d);
