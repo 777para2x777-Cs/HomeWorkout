@@ -400,7 +400,7 @@ hr.hairline { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 .cal-weekday-row span { text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted); }
 .cal-week-block { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
 .cal-week-label { width: 62px; flex: none; font-size: 11px; color: var(--text-muted); }
-.cal-week-cells { flex: 1; }
+.cal-week-cells, .cal-weekday-row { flex: 1; }
 .cal-cell {
   aspect-ratio: 1; border-radius: 9px; display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 1px; border: 1.5px solid var(--border); background: var(--surface-2); color: var(--text-muted);

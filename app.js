@@ -727,12 +727,18 @@ function buildCalendar(numWeeks) {
   const currentWeekStart = getMostRecentSaturday(today);
 
   const wrap = el('div');
+  // Header must mirror the exact flex skeleton of a .cal-week-block (empty label-width
+  // spacer + the 7-col grid) — it was previously a bare full-width grid while every data
+  // row is inset by the label's width, so header columns never lined up with their data.
+  const headerBlock = el('div', 'cal-week-block');
+  headerBlock.appendChild(el('div', 'cal-week-label', ''));
   const header = el('div', 'cal-weekday-row');
   // Columns are forced to a fixed physical left-to-right order below (Fri...Sat) —
   // some WebViews don't mirror CSS Grid tracks under dir=rtl the way flexbox does,
   // so we render explicit physical order instead of relying on that mirroring.
   ['ج', 'پ', 'چ', 'س', 'د', 'ی', 'ش'].forEach((l) => header.appendChild(el('span', '', l)));
-  wrap.appendChild(header);
+  headerBlock.appendChild(header);
+  wrap.appendChild(headerBlock);
 
   for (let w = 0; w < numWeeks; w++) {
     const weekStart = new Date(currentWeekStart);
