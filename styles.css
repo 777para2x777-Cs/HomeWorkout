@@ -358,42 +358,6 @@ hr.hairline { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
 .day-picker { display: flex; gap: 8px; flex-wrap: wrap; }
 
-/* ===== Timer overlay ===== */
-.timer-overlay {
-  position: fixed; inset: 0; z-index: 50;
-  background: color-mix(in srgb, var(--bg) 96%, transparent);
-  backdrop-filter: blur(6px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 22px; padding: 24px;
-}
-.timer-overlay[hidden] { display: none; }
-.timer-phase {
-  font-family: var(--font-display); font-weight: 800; font-size: 20px;
-  padding: 8px 22px; border-radius: 999px; color: var(--accent-ink); background: var(--accent);
-  transition: background 0.25s ease;
-}
-.timer-phase.is-rest { background: var(--cat-recovery); }
-.timer-clock {
-  font-family: var(--font-mono); font-size: 68px; font-weight: 700; letter-spacing: 1px;
-  color: var(--text);
-}
-.timer-round { color: var(--text-muted); font-size: 14px; }
-.timer-controls { display: flex; gap: 12px; margin-top: 8px; }
-.timer-setup { width: 100%; max-width: 320px; display: flex; flex-direction: column; gap: 12px; }
-.timer-field { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.timer-field label { font-size: 13.5px; color: var(--text-secondary); }
-.num-stepper { display: flex; align-items: center; gap: 10px; }
-.num-stepper button {
-  width: 30px; height: 30px; border-radius: 9px; border: 1px solid var(--border-strong);
-  background: var(--surface-2); color: var(--text); font-size: 16px; cursor: pointer;
-}
-.num-stepper .val { font-family: var(--font-mono); min-width: 34px; text-align: center; font-size: 15px; }
-.close-x {
-  position: absolute; top: 18px; inset-inline-end: 18px;
-  width: 38px; height: 38px; border-radius: 12px; border: 1px solid var(--border);
-  background: var(--surface); color: var(--text-secondary); cursor: pointer;
-}
-
 /* ===== Week view ===== */
 .day-card { display: flex; flex-direction: column; gap: 10px; }
 .day-card-head { display: flex; align-items: center; justify-content: space-between; }
@@ -432,7 +396,7 @@ hr.hairline { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 .chart-empty { color: var(--text-muted); font-size: 13px; text-align: center; padding: 20px 0; }
 
 /* ===== training calendar ===== */
-.cal-weekday-row, .cal-week-cells { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal-weekday-row, .cal-week-cells { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; direction: ltr; }
 .cal-weekday-row span { text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted); }
 .cal-week-block { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
 .cal-week-label { width: 62px; flex: none; font-size: 11px; color: var(--text-muted); }

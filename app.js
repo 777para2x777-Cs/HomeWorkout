@@ -62,7 +62,6 @@ const ICONS = {
   chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>',
   close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
-  timer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5V13.5l3 2M10 2h4"/></svg>',
   sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.4 4.4l1.6 1.6M18 18l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.4 19.6L6 18M18 6l1.6-1.6"/></svg>',
   moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>',
   dumbbell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 10v4M2.5 9.5v5M7 8v8M17 8v8M20 9.5v5M9.5 12h5"/></svg>',
@@ -70,8 +69,9 @@ const ICONS = {
   bike: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="17" r="3.4"/><circle cx="18" cy="17" r="3.4"/><path d="M6 17l4-8h5l3 8M10 9h3M13 5.5h3l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   mat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M9 6v12"/></svg>',
   play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l11-6.8c.6-.4.6-1.3 0-1.7l-11-6.8c-.7-.4-1.6.1-1.6.8Z"/></svg>',
+  bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>',
 };
-const EQUIP_ICON = { 'دمبل': ICONS.dumbbell, 'کش مقاومتی': ICONS.band, 'دوچرخه اسپینینگ': ICONS.bike, 'مت': ICONS.mat };
+const EQUIP_ICON = { 'دمبل': ICONS.dumbbell, 'کش مقاومتی': ICONS.band, 'دوچرخه اسپینینگ': ICONS.bike, 'مت': ICONS.mat, 'بدون وسیله': ICONS.bolt };
 
 const CAT_LABEL = { strength: 'قدرتی', cardio: 'کاردیو', core: 'شکم', recovery: 'ریکاوری', rest: 'استراحت' };
 
@@ -117,12 +117,15 @@ const EXERCISES = {
   mountain_climber: { name: 'مانتین کلایمبر', equipment: ['مت'], category: 'cardio',
     video: 'https://www.youtube.com/watch?v=ZhiCSdOVJp0',
     cues: ['در پلانک بالای دست بایست', 'زانوها را متناوب و سریع به سینه بکش', 'شکم منقبض بماند تا کمر افت نکند'] },
-  russian_twist: { name: 'راشین تویست با دمبل', equipment: ['دمبل', 'مت'], category: 'core',
-    video: 'https://www.youtube.com/watch?v=p_dPOhhgovg',
-    cues: ['روی مت بنشین، کمی به عقب تکیه بده', 'دمبل را با دو دست از یک پهلو به پهلوی دیگر ببر', 'کمر صاف بماند، حرکت از قفسه سینه'] },
   leg_raise: { name: 'بالا آوردن پا خوابیده', equipment: ['مت'], category: 'core',
-    video: 'https://www.youtube.com/watch?v=0tzBVqiDwSs',
-    cues: ['به پشت دراز بکش، دست‌ها کنار بدن', 'پاها صاف و جفت، تا ۹۰ درجه بالا ببر', 'کمر را کاملاً روی زمین نگه دار'] },
+    video: 'https://www.youtube.com/watch?v=cHKq6h0hANQ',
+    cues: ['روی مت به پشت دراز بکش، دست‌ها کنار بدن یا زیر باسن', 'پاها صاف و جفت، تا ۹۰ درجه بالا ببر', 'کمر را کاملاً روی زمین نگه دار'] },
+  jumping_jack: { name: 'جامپینگ جک', equipment: ['بدون وسیله'], category: 'cardio',
+    video: 'https://www.youtube.com/watch?v=uLVt6u15L98',
+    cues: ['بایست، پاها جفت و دست‌ها کنار بدن', 'همزمان پاها رو باز کن و دست‌ها رو بالای سر بزن', 'ریتم ثابت و تنفس منظم داشته باش'] },
+  squat_jump: { name: 'اسکوات پرشی', equipment: ['بدون وسیله'], category: 'cardio',
+    video: 'https://www.youtube.com/watch?v=tZSYZdtbONc',
+    cues: ['یه اسکوات معمولی بدون وزنه انجام بده', 'از پایین اسکوات با قدرت بپر بالا', 'فرود نرم روی هر دو پا، دوباره اسکوات کن'] },
   plank_shoulder_tap: { name: 'پلانک با لمس شانه', equipment: ['مت'], category: 'core',
     video: 'https://www.youtube.com/watch?v=eT93C-xUZI8',
     cues: ['در پلانک دست باز قرار بگیر', 'هر بار یک دست را به شانه مخالف بزن', 'لگن ثابت بماند و تاب نخورد'] },
@@ -133,9 +136,6 @@ const EXERCISES = {
     video: 'https://www.youtube.com/watch?v=Ujf5ELfqI7o',
     cues: ['روی یک آرنج و لبه پا تکیه بده', 'بدن یک خط صاف، باسن پایین نیفتد', 'دست دیگر رو به سقف باز شود'] },
 
-  bike_hiit: { name: 'اسپینینگ HIIT (FlexiFit)', equipment: ['دوچرخه اسپینینگ'], category: 'cardio',
-    video: 'https://www.youtube.com/watch?v=2dPznYhaPag',
-    cues: ['اپ FitShow را با بلوتوث وصل کن تا سرعت و ریتم را ببینی', 'در فاز اسپرینت با تمام توان رکاب بزن', 'در فاز ریکاوری آرام رکاب بزن، متوقف نشو'] },
   bike_recovery: { name: 'رکاب سبک ریکاوری', equipment: ['دوچرخه اسپینینگ'], category: 'cardio',
     video: 'https://www.youtube.com/watch?v=v1-rdXGFzW4',
     cues: ['مقاومت کم، فقط برای باز شدن پاها بعد از هفته سنگین', 'ضربان قلب باید پایین و راحت بماند، نه نفس‌نفس‌زدن', 'روی اپ FitShow ریتم ثابت و آرام را چک کن'] },
@@ -180,7 +180,7 @@ const CORRECTIVE_BLOCK = {
   items: [
     { ex: 'dead_bug', sets: 3, reps: '۱۰ هر طرف', restSec: 30 },
     { ex: 'bird_dog', sets: 3, reps: '۱۰ هر طرف', restSec: 30 },
-    { ex: 'pelvic_tilt', sets: 2, reps: '۱۲', restSec: 20 },
+    { ex: 'pelvic_tilt', sets: 2, reps: '۱۲', restSec: 30 },
     { ex: 'bw_glute_bridge', sets: 3, reps: '۱۵', restSec: 30 },
   ],
 };
@@ -203,18 +203,20 @@ const DAY_PLANS = [
       ] },
     ], cooldown: ['۲ دقیقه کشش سینه، پشت‌بازو و شانه'] },
 
-  { key: 'B', title: 'کاردیو HIIT + شکم', category: 'cardio', estMinutes: 35,
-    warmup: ['۵ دقیقه رکاب آرام روی FlexiFit'],
-    hiit: { rounds: 8, work: 30, rest: 90 },
+  { key: 'B', title: 'کاردیوی متابولیک + شکم', category: 'cardio', estMinutes: 36,
+    warmup: ['۳ دقیقه گرم کردن: چرخش مفاصل + جامپینگ جک سبک'],
     blocks: [
-      { title: 'کاردیو اصلی', items: [ { ex: 'bike_hiit', sets: '۸ دور', reps: '۳۰ ثانیه اسپرینت / ۹۰ ثانیه ریکاوری', isHiit: true } ] },
-      { title: 'شکم', items: [
-        { ex: 'mountain_climber', sets: 3, reps: '۳۰ ثانیه', restSec: 20, durationSec: 30 },
-        { ex: 'russian_twist', sets: 3, reps: '۲۰', restSec: 20 },
-        { ex: 'leg_raise', sets: 3, reps: '۱۵', restSec: 20 },
-        { ex: 'plank_shoulder_tap', sets: 3, reps: '۳۰ ثانیه', restSec: 20, durationSec: 30 },
+      { title: 'سیرکویت کاردیو (۳ ست هر حرکت)', items: [
+        { ex: 'jumping_jack', sets: 3, reps: '۴۰ ثانیه', restSec: 30, durationSec: 40 },
+        { ex: 'mountain_climber', sets: 3, reps: '۳۰ ثانیه', restSec: 30, durationSec: 30 },
+        { ex: 'squat_jump', sets: 3, reps: '۱۵', restSec: 30 },
+        { ex: 'walking_lunge', sets: 3, reps: '۱۲ هر پا', restSec: 30 },
       ] },
-    ], cooldown: ['۵ دقیقه رکاب سبک برای سرد کردن + کشش ساق پا'] },
+      { title: 'شکم', items: [
+        { ex: 'leg_raise', sets: 3, reps: '۱۵', restSec: 30 },
+        { ex: 'plank_shoulder_tap', sets: 3, reps: '۳۰ ثانیه', restSec: 30, durationSec: 30 },
+      ] },
+    ], cooldown: ['۵ دقیقه کشش کلی بدن و تنفس آرام'] },
 
   { key: 'C', title: 'تمام‌بدن ۲ + شکم', category: 'strength', estMinutes: 38,
     warmup: ['۳ دقیقه گرم کردن: لانژ سبک بدون وزنه، چرخش لگن، کت-کاو'],
@@ -245,11 +247,11 @@ const BONUS_PLANS = {
     warmup: [],
     blocks: [
       { title: 'فلوی یوگا', items: [
-        { ex: 'cat_cow', sets: 2, reps: '۸ نفس', restSec: 15 },
-        { ex: 'down_dog_block', sets: 3, reps: '۳۰-۴۵ ثانیه', restSec: 15, durationSec: 40 },
-        { ex: 'pigeon_block', sets: 2, reps: '۴۵ ثانیه هر طرف', restSec: 15, durationSec: 45 },
-        { ex: 'seated_fold_block', sets: 2, reps: '۴۵ ثانیه', restSec: 15, durationSec: 45 },
-        { ex: 'hip_flexor_stretch', sets: 2, reps: '۳۰ ثانیه هر طرف', restSec: 15, durationSec: 30 },
+        { ex: 'cat_cow', sets: 2, reps: '۸ نفس', restSec: 30 },
+        { ex: 'down_dog_block', sets: 3, reps: '۳۰-۴۵ ثانیه', restSec: 30, durationSec: 40 },
+        { ex: 'pigeon_block', sets: 2, reps: '۴۵ ثانیه هر طرف', restSec: 30, durationSec: 45 },
+        { ex: 'seated_fold_block', sets: 2, reps: '۴۵ ثانیه', restSec: 30, durationSec: 45 },
+        { ex: 'hip_flexor_stretch', sets: 2, reps: '۳۰ ثانیه هر طرف', restSec: 30, durationSec: 30 },
         { ex: 'childs_pose', sets: 1, reps: '۱ دقیقه', restSec: 0, durationSec: 60 },
       ] },
     ], cooldown: ['۳ دقیقه تنفس عمیق برای آرام کردن سیستم عصبی'] },
@@ -537,13 +539,6 @@ function renderToday() {
       wrap.appendChild(progCard);
     }
 
-    if (plan.hiit) {
-      const btn = el('button', 'btn btn-primary btn-block');
-      btn.innerHTML = `${ICONS.timer} شروع تایمر HIIT`;
-      btn.addEventListener('click', () => openHiitTimer(plan.hiit));
-      wrap.appendChild(btn);
-    }
-
     plan.blocks.forEach((block) => {
       const card = el('div', 'card');
       card.appendChild(el('div', 'section-title', block.title));
@@ -730,7 +725,10 @@ function buildCalendar(numWeeks) {
 
   const wrap = el('div');
   const header = el('div', 'cal-weekday-row');
-  ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'].forEach((l) => header.appendChild(el('span', '', l)));
+  // Columns are forced to a fixed physical left-to-right order below (Fri...Sat) —
+  // some WebViews don't mirror CSS Grid tracks under dir=rtl the way flexbox does,
+  // so we render explicit physical order instead of relying on that mirroring.
+  ['ج', 'پ', 'چ', 'س', 'د', 'ی', 'ش'].forEach((l) => header.appendChild(el('span', '', l)));
   wrap.appendChild(header);
 
   for (let w = 0; w < numWeeks; w++) {
@@ -740,7 +738,7 @@ function buildCalendar(numWeeks) {
     const labelText = w === 0 ? 'این هفته' : w === 1 ? 'هفته قبل' : `${toFa(w)} هفته پیش`;
     rowWrap.appendChild(el('div', 'cal-week-label', labelText));
     const cellsWrap = el('div', 'cal-week-cells');
-    for (let c = 0; c < 7; c++) {
+    for (let c = 6; c >= 0; c--) {
       const d = new Date(weekStart);
       d.setDate(d.getDate() + c);
       const iso = todayISO(d);
@@ -1008,108 +1006,6 @@ function renderSettings() {
   wrap.appendChild(credit);
 
   return wrap;
-}
-
-/* ---------- HIIT timer overlay ---------- */
-const hiitState = { timerId: null, phase: 'work', remaining: 0, round: 1, rounds: 8, work: 30, rest: 90, running: false };
-function openHiitTimer(defaults) {
-  hiitState.rounds = defaults.rounds; hiitState.work = defaults.work; hiitState.rest = defaults.rest;
-  hiitState.round = 1; hiitState.phase = 'work'; hiitState.remaining = hiitState.work; hiitState.running = false;
-  renderHiitOverlay('setup');
-}
-function fmtClock(sec) {
-  const m = Math.floor(sec / 60), s = sec % 60;
-  return `${toFa(pad2(m))}:${toFa(pad2(s))}`;
-}
-function renderHiitOverlay(mode) {
-  const overlay = document.getElementById('timer-overlay');
-  overlay.hidden = false;
-  if (mode === 'setup') {
-    overlay.innerHTML = `
-      <button class="close-x" id="hiit-close">${ICONS.close}</button>
-      <h2 style="font-family:var(--font-display)">تایمر HIIT اسپینینگ</h2>
-      <div class="timer-setup">
-        ${stepperRow('rounds', 'تعداد دور', hiitState.rounds, 1)}
-        ${stepperRow('work', 'ثانیه اسپرینت', hiitState.work, 5)}
-        ${stepperRow('rest', 'ثانیه ریکاوری', hiitState.rest, 5)}
-      </div>
-      <button class="btn btn-primary" id="hiit-start">شروع</button>
-    `;
-    ['rounds', 'work', 'rest'].forEach((k) => {
-      overlay.querySelector(`[data-plus="${k}"]`).addEventListener('click', () => { hiitState[k] += k === 'rounds' ? 1 : 5; syncStepper(k); });
-      overlay.querySelector(`[data-minus="${k}"]`).addEventListener('click', () => { hiitState[k] = Math.max(k === 'rounds' ? 1 : 5, hiitState[k] - (k === 'rounds' ? 1 : 5)); syncStepper(k); });
-    });
-    overlay.querySelector('#hiit-close').addEventListener('click', closeHiit);
-    overlay.querySelector('#hiit-start').addEventListener('click', startHiitRun);
-  } else if (mode === 'running') {
-    overlay.innerHTML = `
-      <button class="close-x" id="hiit-close">${ICONS.close}</button>
-      <div class="timer-phase ${hiitState.phase === 'rest' ? 'is-rest' : ''}" id="hiit-phase-label">${hiitState.phase === 'work' ? 'اسپرینت 🔥' : 'ریکاوری'}</div>
-      <div class="timer-clock tabular" id="hiit-clock">${fmtClock(hiitState.remaining)}</div>
-      <div class="timer-round">دور ${toFa(hiitState.round)} از ${toFa(hiitState.rounds)}</div>
-      <div class="timer-controls">
-        <button class="btn btn-secondary" id="hiit-pause">${hiitState.running ? 'مکث' : 'ادامه'}</button>
-        <button class="btn btn-ghost" id="hiit-reset">شروع مجدد</button>
-      </div>
-    `;
-    overlay.querySelector('#hiit-close').addEventListener('click', closeHiit);
-    overlay.querySelector('#hiit-pause').addEventListener('click', toggleHiitPause);
-    overlay.querySelector('#hiit-reset').addEventListener('click', () => openHiitTimer({ rounds: hiitState.rounds, work: hiitState.work, rest: hiitState.rest }));
-  } else if (mode === 'done') {
-    overlay.innerHTML = `
-      <button class="close-x" id="hiit-close">${ICONS.close}</button>
-      <h2 style="font-family:var(--font-display)">تمام شد! 🎉</h2>
-      <p style="color:var(--text-secondary);text-align:center;max-width:260px">${toFa(hiitState.rounds)} دور HIIT با موفقیت تمام شد. کولداون رو یادت نره.</p>
-      <button class="btn btn-primary" id="hiit-close2">بستن</button>
-    `;
-    overlay.querySelector('#hiit-close').addEventListener('click', closeHiit);
-    overlay.querySelector('#hiit-close2').addEventListener('click', closeHiit);
-  }
-}
-function stepperRow(key, label, val, step) {
-  return `<div class="timer-field"><label>${label}</label><div class="num-stepper">
-    <button data-minus="${key}">−</button><span class="val tabular" data-val="${key}">${toFa(val)}</span><button data-plus="${key}">+</button>
-  </div></div>`;
-}
-function syncStepper(key) {
-  document.querySelector(`[data-val="${key}"]`).textContent = toFa(hiitState[key]);
-}
-function startHiitRun() {
-  hiitState.remaining = hiitState.work; hiitState.phase = 'work'; hiitState.round = 1; hiitState.running = true;
-  renderHiitOverlay('running');
-  tickHiit();
-}
-function tickHiit() {
-  clearInterval(hiitState.timerId);
-  hiitState.timerId = setInterval(() => {
-    if (!hiitState.running) return;
-    hiitState.remaining--;
-    const clockEl = document.getElementById('hiit-clock');
-    if (clockEl) clockEl.textContent = fmtClock(Math.max(0, hiitState.remaining));
-    if (hiitState.remaining <= 0) {
-      if (navigator.vibrate) navigator.vibrate(250);
-      if (hiitState.phase === 'work') {
-        hiitState.phase = 'rest'; hiitState.remaining = hiitState.rest;
-      } else {
-        if (hiitState.round >= hiitState.rounds) {
-          clearInterval(hiitState.timerId);
-          if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
-          renderHiitOverlay('done');
-          return;
-        }
-        hiitState.round++; hiitState.phase = 'work'; hiitState.remaining = hiitState.work;
-      }
-      renderHiitOverlay('running');
-    }
-  }, 1000);
-}
-function toggleHiitPause() {
-  hiitState.running = !hiitState.running;
-  document.getElementById('hiit-pause').textContent = hiitState.running ? 'مکث' : 'ادامه';
-}
-function closeHiit() {
-  clearInterval(hiitState.timerId);
-  document.getElementById('timer-overlay').hidden = true;
 }
 
 /* ---------- theme ---------- */
