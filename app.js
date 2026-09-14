@@ -1,5 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
+const APP_VERSION = '2026-09-14.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -574,11 +575,13 @@ function renderToday() {
 
   const completionTime = getTodayCompletionTime();
   const doneBtn = el('button', `btn btn-block ${isTodayCompleted() ? 'btn-secondary' : 'btn-primary'}`);
-  doneBtn.innerHTML = isTodayCompleted() ? `${ICONS.check} تمرین امروز ساعت ${toFa(completionTime)} انجام شد` : 'ثبت پایان تمرین امروز';
+  doneBtn.innerHTML = isTodayCompleted()
+    ? `${ICONS.check} تمرین امروز${completionTime ? ' ساعت ' + toFa(completionTime) : ''} انجام شد`
+    : 'ثبت پایان تمرین امروز';
   doneBtn.addEventListener('click', () => {
     toggleCompletedToday();
     const t = getTodayCompletionTime();
-    toast(isTodayCompleted() ? `دمت گرم! ساعت ${toFa(t)} ثبت شد 💪` : 'لغو شد');
+    toast(isTodayCompleted() ? `دمت گرم!${t ? ' ساعت ' + toFa(t) : ''} ثبت شد 💪` : 'لغو شد');
     renderView();
   });
   wrap.appendChild(doneBtn);
@@ -1002,7 +1005,7 @@ function renderSettings() {
 
   const credit = el('div');
   credit.style.cssText = 'text-align:center;color:var(--text-muted);font-size:11.5px;padding:6px 0';
-  credit.textContent = 'FitCore Home · ۳ روز در هفته، هر جلسه حداکثر ۴۵ دقیقه';
+  credit.textContent = `FitCore Home · ۳ روز در هفته، هر جلسه حداکثر ۴۵ دقیقه · نسخه ${APP_VERSION}`;
   wrap.appendChild(credit);
 
   return wrap;
@@ -1096,6 +1099,8 @@ window.addEventListener('DOMContentLoaded', () => {
   buildShell();
   renderView();
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js').then((reg) => {
+      reg.update().catch(() => {}); // force an immediate check instead of waiting on the browser's own schedule
+    }).catch(() => {});
   }
 });
