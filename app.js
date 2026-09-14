@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-14.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-14.2'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
