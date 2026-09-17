@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-17.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-17.2'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -516,6 +516,25 @@ function buildHiitCard(item) {
 }
 
 /* ================= views ================= */
+function buildPlanBlocks(plan, dateKey, container) {
+  plan.blocks.forEach((block) => {
+    const card = el('div', 'card');
+    card.appendChild(el('div', 'section-title', block.title));
+    const inner = el('div');
+    inner.style.marginTop = '10px';
+    block.items.forEach((item) => {
+      inner.appendChild((item.isHiit || item.single) ? buildHiitCard(item) : buildExerciseCard(item, plan.key, dateKey));
+    });
+    card.appendChild(inner);
+    container.appendChild(card);
+  });
+  if (plan.cooldown && plan.cooldown.length) {
+    const cd = el('div', 'card');
+    cd.innerHTML = `<div class="section-title">سرد کردن</div><p style="margin-top:8px;font-size:13.5px;color:var(--text-secondary)">${plan.cooldown.join(' ')}</p>`;
+    container.appendChild(cd);
+  }
+}
+
 function renderToday() {
   const plan = todayPlan();
   const now = new Date();
@@ -559,23 +578,7 @@ function renderToday() {
       wrap.appendChild(progCard);
     }
 
-    plan.blocks.forEach((block) => {
-      const card = el('div', 'card');
-      card.appendChild(el('div', 'section-title', block.title));
-      const inner = el('div');
-      inner.style.marginTop = '10px';
-      block.items.forEach((item) => {
-        inner.appendChild((item.isHiit || item.single) ? buildHiitCard(item) : buildExerciseCard(item, plan.key, dateKey));
-      });
-      card.appendChild(inner);
-      wrap.appendChild(card);
-    });
-
-    if (plan.cooldown.length) {
-      const cd = el('div', 'card');
-      cd.innerHTML = `<div class="section-title">سرد کردن</div><p style="margin-top:8px;font-size:13.5px;color:var(--text-secondary)">${plan.cooldown.join(' ')}</p>`;
-      wrap.appendChild(cd);
-    }
+    buildPlanBlocks(plan, dateKey, wrap);
   }
 
   const corrCard = el('div', 'card');
@@ -596,16 +599,31 @@ function renderToday() {
   if (makeup) {
     const makeupCard = el('div', 'card');
     makeupCard.style.cssText = 'border-color:var(--miss)';
-    makeupCard.innerHTML = `<p style="font-size:13px;color:var(--text-secondary)">دیروز (${weekdayName(makeup.dateObj)}) برنامه‌ی «${makeup.plan.title}» ثبت نشده. اگه امروز جبرانش کردی، ثبتش کن — توی تقویمِ پیشرفت به‌عنوان «با تأخیر» یادداشت می‌شه، بدون شلوغ‌کاری.</p>`;
+    const makeupDetails = el('details', 'collapsible');
+    makeupDetails.open = true;
+    const makeupSummary = el('summary', '', `دیروز (${weekdayName(makeup.dateObj)}) «${makeup.plan.title}» رو انجام ندادی — همینجا انجامش بده`);
+    makeupDetails.appendChild(makeupSummary);
+    const makeupBody = el('div');
+    makeupBody.style.marginTop = '10px';
+    makeupBody.innerHTML = `
+      <div class="row-between" style="margin-bottom:10px">
+        ${badgeHtml(makeup.plan.category)}
+        <span class="ex-sub">${makeup.plan.estMinutes ? '~' + toFa(makeup.plan.estMinutes) + ' دقیقه' : ''}</span>
+      </div>
+      ${makeup.plan.warmup && makeup.plan.warmup.length ? `<p class="hero-desc" style="margin-bottom:10px"><strong>گرم کردن:</strong> ${makeup.plan.warmup.join(' ')}</p>` : ''}
+    `;
+    buildPlanBlocks(makeup.plan, makeup.date, makeupBody);
     const makeupBtn = el('button', 'btn btn-secondary btn-block');
-    makeupBtn.style.marginTop = '10px';
-    makeupBtn.textContent = 'ثبت جبرانی دیروز';
+    makeupBtn.style.marginTop = '4px';
+    makeupBtn.textContent = 'ثبت پایان تمرین جبرانی دیروز';
     makeupBtn.addEventListener('click', () => {
       markMakeupDone(makeup.date);
       toast('جبران دیروز ثبت شد ✅');
       renderView();
     });
-    makeupCard.appendChild(makeupBtn);
+    makeupBody.appendChild(makeupBtn);
+    makeupDetails.appendChild(makeupBody);
+    makeupCard.appendChild(makeupDetails);
     wrap.appendChild(makeupCard);
   }
 
