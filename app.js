@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-17.3'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-17.4'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -84,9 +84,9 @@ const EXERCISES = {
   floor_press: { name: 'پرس سینه دمبل روی مت', equipment: ['دمبل', 'مت'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=uUGDRwge4F8',
     cues: ['روی مت دراز بکش، زانو خم و کف پا روی زمین', 'دمبل‌ها را از سینه به سمت بالا فشار بده', 'آرنج‌ها را کمی پایین‌تر از خط شانه نگه دار'] },
-  bent_row: { name: 'زیربغل خم با دمبل', equipment: ['دمبل'], category: 'strength',
-    video: 'https://www.youtube.com/watch?v=6TSP1TRMUzs',
-    cues: ['زانو کمی خم، کمر صاف، از لگن خم شو', 'دمبل‌ها را به سمت پهلو بکش، آرنج نزدیک بدن', 'در بالای حرکت یک لحظه فشار کتف‌ها را حس کن'] },
+  band_row: { name: 'زیربغل ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=k7EPhs1i9mU',
+    cues: ['کش رو با بند بالای درب، تقریباً هم‌ارتفاع سینه انکر کن', 'رو به درب بایست، دسته‌ها رو با دو دست بگیر و به سمت پهلو بکش', 'آرنج‌ها نزدیک بدن، در انتها کتف‌ها رو فشار بده'] },
   band_overhead_press: { name: 'پرس سرشانه ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=SoKGZpyXUMY',
     cues: ['حلقه‌ی پایینی کش (بند مچ‌پا) رو زیر یک یا دو پا بذار، یا کش رو پایین درب انکر کن', 'دسته‌ی وسط رو کنار شانه بگیر و بالای سر فشار بده تا دست‌ها صاف شوند', 'شکم منقبض تا کمر قوس نکند'] },
@@ -99,12 +99,12 @@ const EXERCISES = {
   band_chest_press: { name: 'پرس سینه ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=6-86jEAXA08',
     cues: ['کش رو با بند بالای درب (لولا یا لبه‌ی بالای درب) انکر کن، تقریباً هم‌ارتفاع سینه', 'پشت به درب بایست، دسته رو با دو دست بگیر و رو به جلو فشار بده', 'یک قدم جلوتر برو تا کش کشیده بمونه، برگشت رو آهسته و کنترل‌شده انجام بده'] },
-  single_arm_row: { name: 'زیربغل تک‌دست با دمبل', equipment: ['دمبل'], category: 'strength',
-    video: 'https://www.youtube.com/watch?v=fURsHPHgssI',
-    cues: ['یک دست و زانو روی سطح ثابت، کمر صاف', 'دمبل را با دست دیگر به سمت پهلو بکش', 'بدن تاب نخورد، فقط بازو حرکت کند'] },
-  band_kickback: { name: 'ضربه پا به عقب با کش (باسن)', equipment: ['کش مقاومتی'], category: 'strength',
-    video: 'https://www.youtube.com/watch?v=qnllnxtCP2s',
-    cues: ['کش رو پایین درب (نزدیک زمین) انکر کن و بند مچ‌پا رو به یک پا ببند', 'با دست به دیوار یا در تکیه بده، پای بسته‌شده رو مستقیم و کنترل‌شده به عقب بکش', 'در انتها باسن رو منقبض کن، زانو زیاد خم نشه'] },
+  bent_row: { name: 'زیربغل خم با دمبل', equipment: ['دمبل'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=6TSP1TRMUzs',
+    cues: ['زانو کمی خم، کمر صاف، از لگن خم شو (نیازی به نیمکت نیست، ایستاده انجام می‌شه)', 'دمبل‌ها را به سمت پهلو بکش، آرنج نزدیک بدن', 'در بالای حرکت یک لحظه فشار کتف‌ها را حس کن'] },
+  db_glute_bridge: { name: 'پل باسن با دمبل', equipment: ['دمبل', 'مت'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=0kx1QOzhTCQ',
+    cues: ['روی مت به پشت دراز بکش، زانو خم، دمبل رو روی لگن نگه دار', 'با فشار پاشنه، لگن رو بالا ببر تا از شانه تا زانو یک خط بشه', 'در بالا باسن رو محکم منقبض کن، کمر قوس نکنه'] },
   lateral_raise: { name: 'نشر جانب دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=ssAo_xwFt5c',
     cues: ['دمبل سبک انتخاب کن', 'دست‌ها را تا ارتفاع شانه از پهلو بالا ببر', 'کمی آرنج خم باشد، شانه‌ها بالا نیاید'] },
@@ -194,7 +194,7 @@ const DAY_PLANS = [
       { title: 'حرکات اصلی', items: [
         { ex: 'goblet_squat', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'floor_press', sets: 3, reps: '۱۲', restSec: 60 },
-        { ex: 'bent_row', sets: 3, reps: '۱۲', restSec: 60 },
+        { ex: 'band_row', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'band_overhead_press', sets: 3, reps: '۱۵', restSec: 45 },
         { ex: 'rdl', sets: 3, reps: '۱۲', restSec: 60 },
       ] },
@@ -225,8 +225,8 @@ const DAY_PLANS = [
       { title: 'حرکات اصلی', items: [
         { ex: 'walking_lunge', sets: 3, reps: '۱۲ هر پا', restSec: 60 },
         { ex: 'band_chest_press', sets: 3, reps: '۱۵', restSec: 45 },
-        { ex: 'single_arm_row', sets: 3, reps: '۱۲ هر دست', restSec: 60 },
-        { ex: 'band_kickback', sets: 3, reps: '۱۲ هر پا', restSec: 45 },
+        { ex: 'bent_row', sets: 3, reps: '۱۲', restSec: 60 },
+        { ex: 'db_glute_bridge', sets: 3, reps: '۱۵', restSec: 45 },
         { ex: 'lateral_raise', sets: 3, reps: '۱۵', restSec: 45 },
       ] },
       { title: 'فینیشر شکم', items: [
@@ -402,7 +402,8 @@ function playChime() {
 /* ---------- active bar: shared work/rest timer, Hevy-style ---------- */
 /* Timestamp-based (not a naive per-tick counter) so background tab throttling
    never "freezes" the display — visibilitychange forces an immediate resync. */
-let activeBarState = null; // { endTime, timerId, mode: 'work'|'rest', onDone }
+let activeBarState = null; // { id, endTime, timerId, mode: 'work'|'rest', onDone }
+let activeBarSeq = 0;
 
 function clearActiveBar() {
   if (activeBarState) clearInterval(activeBarState.timerId);
@@ -443,7 +444,8 @@ function showActiveBar(seconds, label, mode, onDone) {
       ${mode === 'rest' ? '<button class="btn btn-ghost btn-sm" id="rest-plus">+۱۵</button>' : ''}
       <button class="btn btn-secondary btn-sm" id="rest-skip">${mode === 'work' ? 'پایان زودتر' : 'رد کردن'}</button>
     </div>`;
-  activeBarState = { endTime: Date.now() + seconds * 1000, timerId: null, mode, onDone };
+  const myId = ++activeBarSeq;
+  activeBarState = { id: myId, endTime: Date.now() + seconds * 1000, timerId: null, mode, onDone };
   updateActiveBarClock(seconds);
   document.getElementById('rest-skip').addEventListener('click', () => {
     const finishedWork = activeBarState && activeBarState.mode === 'work';
@@ -454,6 +456,11 @@ function showActiveBar(seconds, label, mode, onDone) {
   const plusBtn = document.getElementById('rest-plus');
   if (plusBtn) plusBtn.addEventListener('click', () => { activeBarState.endTime += 15000; tickActiveBar(); });
   activeBarState.timerId = setInterval(tickActiveBar, 250);
+  // Safety net: some WebViews have throttled/dropped a repeating setInterval outright
+  // (not just delayed it) in ways visibilitychange never catches because the tab never
+  // left foreground. This one-shot timer independently forces a resync once real time
+  // has definitely passed the deadline, guaranteeing the countdown can't get stuck.
+  setTimeout(() => { if (activeBarState && activeBarState.id === myId) tickActiveBar(); }, seconds * 1000 + 400);
 }
 function showRestBar(seconds, label) { showActiveBar(seconds, label, 'rest', null); }
 document.addEventListener('visibilitychange', () => { if (!document.hidden) tickActiveBar(); });
