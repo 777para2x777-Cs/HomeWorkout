@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-14.3'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-17.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -336,6 +336,25 @@ function getCurrentStreak() {
 }
 function getCheckedMap() { return readJSON(KEYS.checked, {}); }
 
+/* ---------- make-up: catch up on yesterday's missed (required) day ---------- */
+function getYesterdayMakeupCandidate() {
+  const y = new Date();
+  y.setDate(y.getDate() - 1);
+  y.setHours(0, 0, 0, 0);
+  const plan = planForJsDay(y.getDay());
+  if (!plan || plan.optional) return null; // nothing required was scheduled, or it was an optional bonus day
+  const iso = todayISO(y);
+  if (getCompletedDateSet().has(iso)) return null; // already logged
+  return { date: iso, dateObj: y, plan };
+}
+function markMakeupDone(dateIso) {
+  const entries = getCompletedEntries();
+  if (entries.some((e) => e.date === dateIso)) return;
+  const now = new Date();
+  entries.push({ date: dateIso, time: pad2(now.getHours()) + ':' + pad2(now.getMinutes()), late: true });
+  writeJSON(KEYS.completed, entries);
+}
+
 /* ---------- toast ---------- */
 let toastTimer = null;
 function toast(msg) {
@@ -573,6 +592,23 @@ function renderToday() {
   corrCard.appendChild(corrDetails);
   wrap.appendChild(corrCard);
 
+  const makeup = getYesterdayMakeupCandidate();
+  if (makeup) {
+    const makeupCard = el('div', 'card');
+    makeupCard.style.cssText = 'border-color:var(--miss)';
+    makeupCard.innerHTML = `<p style="font-size:13px;color:var(--text-secondary)">دیروز (${weekdayName(makeup.dateObj)}) برنامه‌ی «${makeup.plan.title}» ثبت نشده. اگه امروز جبرانش کردی، ثبتش کن — توی تقویمِ پیشرفت به‌عنوان «با تأخیر» یادداشت می‌شه، بدون شلوغ‌کاری.</p>`;
+    const makeupBtn = el('button', 'btn btn-secondary btn-block');
+    makeupBtn.style.marginTop = '10px';
+    makeupBtn.textContent = 'ثبت جبرانی دیروز';
+    makeupBtn.addEventListener('click', () => {
+      markMakeupDone(makeup.date);
+      toast('جبران دیروز ثبت شد ✅');
+      renderView();
+    });
+    makeupCard.appendChild(makeupBtn);
+    wrap.appendChild(makeupCard);
+  }
+
   const completionTime = getTodayCompletionTime();
   const doneBtn = el('button', `btn btn-block ${isTodayCompleted() ? 'btn-secondary' : 'btn-primary'}`);
   doneBtn.innerHTML = isTodayCompleted()
@@ -763,8 +799,10 @@ function buildCalendar(numWeeks) {
       const [, , jd] = gregorianToJalali(d.getFullYear(), d.getMonth() + 1, d.getDate());
       const mark = status === 'done' ? '✓' : status === 'missed' ? '×' : '';
       cell.innerHTML = `<span class="cal-daynum">${toFa(jd)}</span>${mark ? `<span class="cal-mark">${mark}</span>` : ''}`;
-      const doneTime = entriesByDate[iso] && entriesByDate[iso].time;
-      cell.title = `${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}` + (doneTime ? ` · ساعت ${toFa(doneTime)}` : '');
+      const doneEntry = entriesByDate[iso];
+      cell.title = `${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}` +
+        (doneEntry && doneEntry.time ? ` · ساعت ${toFa(doneEntry.time)}` : '') +
+        (doneEntry && doneEntry.late ? ' · با تأخیر ثبت شد' : '');
       cellsWrap.appendChild(cell);
     }
     rowWrap.appendChild(cellsWrap);
@@ -851,7 +889,7 @@ function renderProgress() {
       const row = el('div', 'row-between');
       row.style.cssText = 'font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--border)';
       row.innerHTML = `
-        <span>${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}${plan ? ' · ' + plan.title : ''}</span>
+        <span>${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}${plan ? ' · ' + plan.title : ''}${e.late ? ' · <span style="color:var(--miss)">با تأخیر</span>' : ''}</span>
         <span class="mono tabular" style="color:var(--text-muted)">${e.time ? toFa(e.time) : '—'}</span>
       `;
       list.appendChild(row);
