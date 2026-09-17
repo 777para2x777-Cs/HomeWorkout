@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-17.2'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-17.3'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -352,6 +352,13 @@ function markMakeupDone(dateIso) {
   if (entries.some((e) => e.date === dateIso)) return;
   const now = new Date();
   entries.push({ date: dateIso, time: pad2(now.getHours()) + ':' + pad2(now.getMinutes()), late: true });
+  writeJSON(KEYS.completed, entries);
+}
+function unmarkDateCompleted(dateIso) {
+  const entries = getCompletedEntries();
+  const idx = entries.findIndex((e) => e.date === dateIso);
+  if (idx === -1) return;
+  entries.splice(idx, 1);
   writeJSON(KEYS.completed, entries);
 }
 
@@ -818,9 +825,16 @@ function buildCalendar(numWeeks) {
       const mark = status === 'done' ? '✓' : status === 'missed' ? '×' : '';
       cell.innerHTML = `<span class="cal-daynum">${toFa(jd)}</span>${mark ? `<span class="cal-mark">${mark}</span>` : ''}`;
       const doneEntry = entriesByDate[iso];
-      cell.title = `${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}` +
+      let title = `${PERSIAN_WEEKDAYS[d.getDay()]} ${formatShamsi(d)}` +
         (doneEntry && doneEntry.time ? ` · ساعت ${toFa(doneEntry.time)}` : '') +
         (doneEntry && doneEntry.late ? ' · با تأخیر ثبت شد' : '');
+      if (status === 'done') {
+        cell.classList.add('clickable');
+        cell.dataset.action = 'unmark-day';
+        cell.dataset.date = iso;
+        title += ' · برای لغو ثبت، ضربه بزن';
+      }
+      cell.title = title;
       cellsWrap.appendChild(cell);
     }
     rowWrap.appendChild(cellsWrap);
@@ -1138,6 +1152,15 @@ document.addEventListener('click', (e) => {
       markSetChecked(setKey, true);
       if (restSec > 0) showActiveBar(restSec, `استراحت · ${label}`, 'rest', null);
     });
+  }
+
+  const unmarkDay = e.target.closest('[data-action="unmark-day"]');
+  if (unmarkDay) {
+    if (confirm('این روز از حالت «انجام‌شده» خارج بشه؟')) {
+      unmarkDateCompleted(unmarkDay.dataset.date);
+      toast('لغو شد');
+      renderView();
+    }
   }
 
   const toggleCues = e.target.closest('[data-action="toggle-cues"]');

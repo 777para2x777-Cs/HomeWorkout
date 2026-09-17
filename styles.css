@@ -407,6 +407,7 @@ hr.hairline { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   gap: 1px; border: 1.5px solid var(--border); background: var(--surface-2); color: var(--text-muted);
 }
 .cal-cell.none { opacity: 0.5; border-style: dashed; }
+.cal-cell.clickable { cursor: pointer; }
 .cal-cell.done { background: var(--good-wash); border-color: var(--good); color: var(--text); }
 .cal-cell.done .cal-mark { color: var(--good); }
 .cal-cell.missed { background: var(--miss-wash); border-color: var(--miss); color: var(--text); }
