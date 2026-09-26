@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-17.4'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-26.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -87,9 +87,9 @@ const EXERCISES = {
   band_row: { name: 'زیربغل ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=k7EPhs1i9mU',
     cues: ['کش رو با بند بالای درب، تقریباً هم‌ارتفاع سینه انکر کن', 'رو به درب بایست، دسته‌ها رو با دو دست بگیر و به سمت پهلو بکش', 'آرنج‌ها نزدیک بدن، در انتها کتف‌ها رو فشار بده'] },
-  band_overhead_press: { name: 'پرس سرشانه ایستاده با کش', equipment: ['کش مقاومتی'], category: 'strength',
-    video: 'https://www.youtube.com/watch?v=SoKGZpyXUMY',
-    cues: ['حلقه‌ی پایینی کش (بند مچ‌پا) رو زیر یک یا دو پا بذار، یا کش رو پایین درب انکر کن', 'دسته‌ی وسط رو کنار شانه بگیر و بالای سر فشار بده تا دست‌ها صاف شوند', 'شکم منقبض تا کمر قوس نکند'] },
+  shoulder_press: { name: 'پرس سرشانه ایستاده با دمبل', equipment: ['دمبل'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=6eDlfTDb7Po',
+    cues: ['دمبل‌ها رو کنار شانه نگه دار، کف دست رو به جلو', 'شکم رو منقبض کن تا کمر قوس پیدا نکنه', 'دمبل‌ها رو بالای سر فشار بده تا دست‌ها صاف بشن، کنترل‌شده برگردون'] },
   rdl: { name: 'ددلیفت رومانیایی با دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=aa57T45iFSE',
     cues: ['دمبل‌ها جلوی ران، زانو کمی خم و ثابت', 'از لگن خم شو، دمبل‌ها نزدیک پا پایین بروند', 'کمر صاف بماند، پشت ران را حس کن'] },
@@ -195,7 +195,7 @@ const DAY_PLANS = [
         { ex: 'goblet_squat', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'floor_press', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'band_row', sets: 3, reps: '۱۲', restSec: 60 },
-        { ex: 'band_overhead_press', sets: 3, reps: '۱۵', restSec: 45 },
+        { ex: 'shoulder_press', sets: 3, reps: '۱۵', restSec: 45 },
         { ex: 'rdl', sets: 3, reps: '۱۲', restSec: 60 },
       ] },
       { title: 'فینیشر شکم', items: [
