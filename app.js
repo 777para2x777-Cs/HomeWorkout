@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-26.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-09-28.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -121,12 +121,12 @@ const EXERCISES = {
   leg_raise: { name: 'بالا آوردن پا خوابیده', equipment: ['مت'], category: 'core',
     video: 'https://www.youtube.com/watch?v=cHKq6h0hANQ',
     cues: ['روی مت به پشت دراز بکش، دست‌ها کنار بدن یا زیر باسن', 'پاها صاف و جفت، تا ۹۰ درجه بالا ببر', 'کمر را کاملاً روی زمین نگه دار'] },
-  jumping_jack: { name: 'جامپینگ جک', equipment: ['بدون وسیله'], category: 'cardio',
-    video: 'https://www.youtube.com/watch?v=uLVt6u15L98',
-    cues: ['بایست، پاها جفت و دست‌ها کنار بدن', 'همزمان پاها رو باز کن و دست‌ها رو بالای سر بزن', 'ریتم ثابت و تنفس منظم داشته باش'] },
-  squat_jump: { name: 'اسکوات پرشی', equipment: ['بدون وسیله'], category: 'cardio',
-    video: 'https://www.youtube.com/watch?v=tZSYZdtbONc',
-    cues: ['یه اسکوات معمولی بدون وزنه انجام بده', 'از پایین اسکوات با قدرت بپر بالا', 'فرود نرم روی هر دو پا، دوباره اسکوات کن'] },
+  high_knee_march: { name: 'مارچ سرجا با بالازانو', equipment: ['بدون وسیله'], category: 'cardio',
+    video: 'https://www.youtube.com/watch?v=-aQbL65YHR0',
+    cues: ['سرجا راه برو و زانوها رو یکی‌یکی تا ارتفاع کمر بالا بیار', 'بدون پرش، فقط با سرعت قدم بردار', 'دست‌ها هم‌زمان و ریتمیک تاب بخورن، شکم منقبض بمونه'] },
+  squat_pulse: { name: 'اسکوات نبضی', equipment: ['بدون وسیله'], category: 'cardio',
+    video: 'https://www.youtube.com/watch?v=OXKOvVi-ZT4',
+    cues: ['تا نیمه‌ی اسکوات پایین برو و همون‌جا بمون', 'با حرکت کوچیک و کنترل‌شده بالا-پایین (نبض) بزن، بدون صاف‌شدن کامل زانو', 'وزن روی پاشنه، زانو هم‌جهت نوک پا'] },
   plank_shoulder_tap: { name: 'پلانک با لمس شانه', equipment: ['مت'], category: 'core',
     video: 'https://www.youtube.com/watch?v=eT93C-xUZI8',
     cues: ['در پلانک دست باز قرار بگیر', 'هر بار یک دست را به شانه مخالف بزن', 'لگن ثابت بماند و تاب نخورد'] },
@@ -208,9 +208,9 @@ const DAY_PLANS = [
     warmup: ['۳ دقیقه گرم کردن: چرخش مفاصل + جامپینگ جک سبک'],
     blocks: [
       { title: 'سیرکویت کاردیو (۳ ست هر حرکت)', items: [
-        { ex: 'jumping_jack', sets: 3, reps: '۴۰ ثانیه', restSec: 30, durationSec: 40 },
+        { ex: 'high_knee_march', sets: 3, reps: '۴۰ ثانیه', restSec: 30, durationSec: 40 },
         { ex: 'mountain_climber', sets: 3, reps: '۳۰ ثانیه', restSec: 30, durationSec: 30 },
-        { ex: 'squat_jump', sets: 3, reps: '۱۵', restSec: 30 },
+        { ex: 'squat_pulse', sets: 3, reps: '۳۰ ثانیه', restSec: 30, durationSec: 30 },
         { ex: 'walking_lunge', sets: 3, reps: '۱۲ هر پا', restSec: 30 },
       ] },
       { title: 'شکم', items: [
