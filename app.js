@@ -1,6 +1,6 @@
 /* ===================== FitCore Home — app logic ===================== */
 'use strict';
-const APP_VERSION = '2026-09-28.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
+const APP_VERSION = '2026-10-16.1'; // bumped on every deploy — check against Settings to confirm the device isn't on stale cached code
 
 /* ---------- small utils ---------- */
 const FA_DIGITS = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -93,6 +93,12 @@ const EXERCISES = {
   rdl: { name: 'ددلیفت رومانیایی با دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=aa57T45iFSE',
     cues: ['دمبل‌ها جلوی ران، زانو کمی خم و ثابت', 'از لگن خم شو، دمبل‌ها نزدیک پا پایین بروند', 'کمر صاف بماند، پشت ران را حس کن'] },
+  bicep_curl: { name: 'جلوبازو ایستاده با دمبل', equipment: ['دمبل'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=Nr-sPLLOIwE',
+    cues: ['آرنج‌ها ثابت و چسبیده به بدن', 'فقط ساعد حرکت کنه، بدن تاب نخوره', 'در پایین بازو رو کامل صاف کن، در بالا یه لحظه منقبض نگه دار'] },
+  band_tricep: { name: 'پشت‌بازو با کش (انکر بالای درب)', equipment: ['کش مقاومتی'], category: 'strength',
+    video: 'https://www.youtube.com/watch?v=BI7NaJ3qPRU',
+    cues: ['کش رو بالای درب انکر کن، دسته‌ها رو با دو دست بالای سینه بگیر', 'آرنج‌ها ثابت کنار بدن، فقط ساعد رو به پایین فشار بده تا دست‌ها صاف بشن', 'در پایین پشت‌بازو رو منقبض کن، برگشت کنترل‌شده'] },
   walking_lunge: { name: 'لانژ راه‌رونده با دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=I34ysEkPK7w',
     cues: ['دمبل‌ها کنار بدن، یک قدم بلند جلو بردار', 'زانوی عقب نزدیک زمین، زانوی جلو بالای مچ پا', 'با فشار پای جلو بلند شو و قدم بعد را بردار'] },
@@ -102,9 +108,6 @@ const EXERCISES = {
   bent_row: { name: 'زیربغل خم با دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=6TSP1TRMUzs',
     cues: ['زانو کمی خم، کمر صاف، از لگن خم شو (نیازی به نیمکت نیست، ایستاده انجام می‌شه)', 'دمبل‌ها را به سمت پهلو بکش، آرنج نزدیک بدن', 'در بالای حرکت یک لحظه فشار کتف‌ها را حس کن'] },
-  db_glute_bridge: { name: 'پل باسن با دمبل', equipment: ['دمبل', 'مت'], category: 'strength',
-    video: 'https://www.youtube.com/watch?v=0kx1QOzhTCQ',
-    cues: ['روی مت به پشت دراز بکش، زانو خم، دمبل رو روی لگن نگه دار', 'با فشار پاشنه، لگن رو بالا ببر تا از شانه تا زانو یک خط بشه', 'در بالا باسن رو محکم منقبض کن، کمر قوس نکنه'] },
   lateral_raise: { name: 'نشر جانب دمبل', equipment: ['دمبل'], category: 'strength',
     video: 'https://www.youtube.com/watch?v=ssAo_xwFt5c',
     cues: ['دمبل سبک انتخاب کن', 'دست‌ها را تا ارتفاع شانه از پهلو بالا ببر', 'کمی آرنج خم باشد، شانه‌ها بالا نیاید'] },
@@ -196,7 +199,7 @@ const DAY_PLANS = [
         { ex: 'floor_press', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'band_row', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'shoulder_press', sets: 3, reps: '۱۵', restSec: 45 },
-        { ex: 'rdl', sets: 3, reps: '۱۲', restSec: 60 },
+        { ex: 'bicep_curl', sets: 3, reps: '۱۵', restSec: 45 },
       ] },
       { title: 'فینیشر شکم', items: [
         { ex: 'plank', sets: 3, reps: '۴۰ ثانیه', restSec: 30, durationSec: 40 },
@@ -223,11 +226,11 @@ const DAY_PLANS = [
     warmup: ['۳ دقیقه گرم کردن: لانژ سبک بدون وزنه، چرخش لگن، کت-کاو'],
     blocks: [
       { title: 'حرکات اصلی', items: [
-        { ex: 'walking_lunge', sets: 3, reps: '۱۲ هر پا', restSec: 60 },
+        { ex: 'rdl', sets: 3, reps: '۱۲', restSec: 60 },
         { ex: 'band_chest_press', sets: 3, reps: '۱۵', restSec: 45 },
         { ex: 'bent_row', sets: 3, reps: '۱۲', restSec: 60 },
-        { ex: 'db_glute_bridge', sets: 3, reps: '۱۵', restSec: 45 },
         { ex: 'lateral_raise', sets: 3, reps: '۱۵', restSec: 45 },
+        { ex: 'band_tricep', sets: 3, reps: '۱۵', restSec: 45 },
       ] },
       { title: 'فینیشر شکم', items: [
         { ex: 'reverse_crunch', sets: 3, reps: '۱۵', restSec: 30 },
@@ -1121,7 +1124,26 @@ function renderView() {
   root.appendChild(VIEWS[state.view]());
   document.querySelectorAll('.tab-btn').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view));
 }
-function switchView(v) { state.view = v; renderView(); window.scrollTo(0, 0); }
+/* ---------- keep the screen on while the workout (Today tab) is open ---------- */
+let wakeLockRef = null;
+async function acquireWakeLock() {
+  if (!('wakeLock' in navigator) || wakeLockRef) return;
+  try {
+    wakeLockRef = await navigator.wakeLock.request('screen');
+    wakeLockRef.addEventListener('release', () => { wakeLockRef = null; });
+  } catch { /* permission denied, low battery mode, etc. — ignore, not critical */ }
+}
+function releaseWakeLock() {
+  if (wakeLockRef) { wakeLockRef.release().catch(() => {}); wakeLockRef = null; }
+}
+function syncWakeLock() {
+  if (state.view === 'today') acquireWakeLock(); else releaseWakeLock();
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') syncWakeLock();
+});
+
+function switchView(v) { state.view = v; renderView(); window.scrollTo(0, 0); syncWakeLock(); }
 
 function markSetChecked(setKey, checked) {
   const map = getCheckedMap();
@@ -1189,6 +1211,7 @@ window.addEventListener('DOMContentLoaded', () => {
   applyTheme();
   buildShell();
   renderView();
+  syncWakeLock();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then((reg) => {
       reg.update().catch(() => {}); // force an immediate check instead of waiting on the browser's own schedule
