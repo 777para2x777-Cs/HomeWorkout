@@ -208,7 +208,7 @@ const DAY_PLANS = [
     ], cooldown: ['۲ دقیقه کشش سینه، پشت‌بازو و شانه'] },
 
   { key: 'B', title: 'کاردیوی متابولیک + شکم', category: 'cardio', estMinutes: 36,
-    warmup: ['۳ دقیقه گرم کردن: چرخش مفاصل + جامپینگ جک سبک'],
+    warmup: ['۳ دقیقه گرم کردن: چرخش مفاصل + مارچ سرجا سبک'],
     blocks: [
       { title: 'سیرکویت کاردیو (۳ ست هر حرکت)', items: [
         { ex: 'high_knee_march', sets: 3, reps: '۴۰ ثانیه', restSec: 30, durationSec: 40 },
